@@ -10,6 +10,7 @@ const Button = (props) => {
   return (
     <RectButton
       style={{ ...styles.container, backgroundColor: backgroundColor }}
+      onPress={props.onPress}
     >
       <Text style={{ ...styles.label, color: color }}>{props.label}</Text>
     </RectButton>

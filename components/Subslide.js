@@ -12,6 +12,7 @@ const Subslide = (props) => {
       <Button
         label={props.last ? "Let's get started" : "Next"}
         variant={props.last ? "primary" : "default"}
+        onPress={props.onPress}
       />
     </View>
   );
