@@ -5,10 +5,10 @@ import {
   onScrollEvent,
   interpolateColor,
 } from "react-native-redash/lib/module/v1";
-
-import Animated from "react-native-reanimated";
+import Animated, { multiply } from "react-native-reanimated";
 
 import Slide, { SLIDER_HEIGHT } from "../../components/Slide";
+import Subslide from "../../components/Subslide";
 
 const { width } = Dimensions.get("window");
 const BORDER_RADIUS = 75;
@@ -76,16 +76,26 @@ const OnBoardingScreen = (props) => {
             backgroundColor: backgroundColor,
           }}
         />
-        <View style={styles.footerContainer}>
+        <Animated.View
+          style={{
+            ...styles.footerContainer,
+            width: width * slides.length,
+            transform: [
+              {
+                translateX: multiply(x, -1),
+              },
+            ],
+          }}
+        >
           {slides.map((slide, index) => (
-            <SubSlide
-              key={index}
-              last={}
+            <Subslide
               title={slide.title}
+              key={index}
               description={slide.description}
+              last={index === slides.length - 1}
             />
           ))}
-        </View>
+        </Animated.View>
       </View>
     </View>
   );
@@ -102,6 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     borderTopLeftRadius: BORDER_RADIUS,
+    flexDirection: "row",
   },
   slider: {
     height: SLIDER_HEIGHT,

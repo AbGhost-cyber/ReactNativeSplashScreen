@@ -10,8 +10,8 @@ enableScreens();
 const fetchFonts = () => {
   return Font.loadAsync({
     "sf-pro-bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
-    "sp-pro-semi": require("./assets/fonts/SF-Pro-Display-Regular.otf"),
-    "sp-pro-regular": require("./assets/fonts/SF-Pro-Display-Semibold.otf"),
+    "sf-pro-semi": require("./assets/fonts/SF-Pro-Display-Semibold.otf"),
+    "sf-pro-regular": require("./assets/fonts/SF-Pro-Display-Regular.otf"),
   });
 };
 
