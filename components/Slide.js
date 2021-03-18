@@ -1,8 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Dimensions, Text } from "react-native";
+import { View, StyleSheet, Dimensions, Image } from "react-native";
+
+import FontsMappper from "../constants/FontsMappper";
+import Text from "../components/Theme"
 
 const { width, height } = Dimensions.get("window");
 export const SLIDER_HEIGHT = 0.61 * height;
+export const BORDER_RADIUS = 75;
 
 const Slide = (props) => {
   const transform = [
@@ -12,8 +16,11 @@ const Slide = (props) => {
   ];
   return (
     <View style={styles.container}>
+      <View style={styles.underlay}>
+        <Image source={props.picture} style={styles.picture} />
+      </View>
       <View style={{ ...styles.titleContainer, transform: transform }}>
-        <Text style={styles.title}>{props.label}</Text>
+        <Text>{props.label}</Text>
       </View>
     </View>
   );
@@ -21,10 +28,17 @@ const Slide = (props) => {
 const styles = StyleSheet.create({
   container: {
     width: width,
+    overflow: "hidden",
+  },
+  picture: {
+    ...StyleSheet.absoluteFillObject,
+    width: undefined,
+    height: undefined,
+    borderBottomRightRadius: BORDER_RADIUS,
   },
   title: {
     fontSize: 80,
-    fontFamily: "sf-pro-bold",
+    fontFamily: FontsMappper.SF_PRO_BOLD,
     color: "white",
     textAlign: "center",
     lineHeight: 80,
@@ -32,6 +46,10 @@ const styles = StyleSheet.create({
   titleContainer: {
     height: 100,
     justifyContent: "center",
+  },
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "flex-end",
   },
 });
 

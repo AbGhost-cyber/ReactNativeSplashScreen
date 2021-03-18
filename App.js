@@ -4,6 +4,9 @@ import FashionNavigation from "./navigation/FashionNavigation";
 import * as Font from "expo-font";
 import { enableScreens } from "react-native-screens";
 import AppLoading from "expo-app-loading";
+import { ThemeProvider } from "@shopify/restyle";
+
+import Theme from "./components/Theme";
 
 enableScreens();
 
@@ -26,7 +29,11 @@ export default function App() {
       />
     );
   }
-  return <FashionNavigation />;
+  return (
+    <ThemeProvider theme={Theme}>
+      <FashionNavigation />;
+    </ThemeProvider>
+  );
 }
 
 const styles = StyleSheet.create({
